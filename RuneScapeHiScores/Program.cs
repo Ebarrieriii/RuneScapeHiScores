@@ -71,3 +71,5 @@ foreach (var item in SkillList)
         $"Level: {item.Level} \n" +
         $"XP: {item.XP}");
 }
+
+var dbConnection = "yada";
