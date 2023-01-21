@@ -4,9 +4,18 @@
 using RuneScapeHiScores;
 
 var client = new HttpClient();
-client.BaseAddress = new Uri("http://services.runescape.com/m=hiscore_oldschool/index_lite.ws?player=gim+edquh");
 
-HttpResponseMessage response = await client.GetAsync(client.BaseAddress);
+client.BaseAddress = new Uri("http://services.runescape.com/m=hiscore_oldschool/index_lite.ws?player=");
+
+Console.WriteLine("Enter Old School Runescape Username: ");
+
+string userName = Console.ReadLine();
+
+userName.Replace(" ", "+");
+
+Uri rsnHighscore = new Uri(client.BaseAddress + userName);
+
+HttpResponseMessage response = await client.GetAsync(rsnHighscore);
 
 var responseData = await response.Content.ReadAsStringAsync();
 
